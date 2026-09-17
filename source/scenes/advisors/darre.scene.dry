@@ -1,0 +1,43 @@
+title: R. Walther Darré
+is-pinned-card: true
+tags: advisor, blood_and_soil
+card-image: img/portraits/DarreWalther.jpg
+view-if: darre_advisor = 1
+new-page: true 
+
+= R. Walther Darré
+
+Darré is our foremost agricultural advisor, the architect of the "Blood and Soil" doctrine, and head of the party's Agrarian Policy Apparatus (ApA).
+
+- @agrarian_policy
+- @blood_and_soil_campaign
+- @autarky_plan
+- @root: Return to main
+
+@agrarian_policy
+title: Agrarian Policy
+subtitle: Darré is the head of the party's Office of Agrarian Policy (Agrarpolitischer Apparat or ApA).
+choose-if: advisor_action_timer <= 0 and nsdap_in_government and agriculture_minister_party == "NSDAP"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not nsdap_in_government : The NSDAP is not in government. ?][? if agriculture_minister_party != "NSDAP": The NSDAP does not hold the Agriculture Ministry. ?]
+on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
+go-to: nsdap_agrarian_policy
+
+
+@blood_and_soil_campaign
+title: "Blood and Soil" Campaign
+subtitle: Target the deeply indebted, struggling small farmers.
+choose-if: advisor_action_timer == 0 and rural_propaganda_unlocked > 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if rural_propaganda_unlocked == 0 : We have not drafted an official agrarian program yet. ?]
+on-arrival: advisor_action_timer = 6; rural_nsdap += 8 * (1 - internal_party_dissent); traditionalist_conservatives_alienated += 1
+
+Our anti-urban, peasant-centric rhetoric has struck a massive chord with the rural populace. Small farmers are joining the party en masse.
+
+@autarky_plan
+title: Addressing the economic crisis
+subtitle: Formulate an autarkic economic model to break free from international markets.
+choose-if: advisor_action_timer <= 0 and blood_and_soil_adopted == 0 and black_thursday_seen
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : The capitalist global market has not yet collapsed. ?][? if blood_and_soil_adopted > 0 : We have already adopted our agricultural economic framework. ?]
+on-arrival: advisor_action_timer = 6; autarky_progress += 2; junker_dissent += 10; rural_strength += 1
+
+Darré’s radical program for agricultural price-fixing, debt moratoriums for peasants, and protectionism has been adopted. Darré canvasses for this "Blood and Soil" alternative across regional party offices.
+
