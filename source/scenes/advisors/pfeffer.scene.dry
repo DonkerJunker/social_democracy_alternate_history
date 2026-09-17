@@ -1,0 +1,62 @@
+title: Franz Pfeffer von Salomon
+is-pinned-card: true
+tags: advisor, legalist_militant
+card-image: img/portraits/PfefferFranz.jpg
+view-if: pfeffer_advisor = 1
+new-page: true 
+
+= Franz Pfeffer von Salomon
+
+Pfeffer von Salomon is a former Prussian army officer and Supreme Commander of the SA. He bridges the gap between formal military discipline and mass mobilization, advocating for a legalist approach to national power.
+
+- @paramilitary_discipline
+- @reichswehr_affairs
+- @support_peoples_movement
+- @build_peoples_movement
+- @campaigning_peoples_movement
+- @root: Return to main
+
+@paramilitary_discipline
+title: Rally for National Discipline
+subtitle: Restrain the SA's worst excesses to present a respectable face to the German public.
+choose-if: advisor_action_timer == 0 
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; nationalism_sentiment += 5; legalist_strategy += 1; hitler_loyalist_strength += 5; orthodox_strength += 3; working_class_nsdap += 4*(1-internal_party_dissent) if legalist_strategy >= 4; old_middle_nsdap += 3*(1-internal_party_dissent) if legalist_strategy >= 4
+
+Pfeffer helps enforce strict operational order, pivoting the SA from chaotic brawlers into a disciplined national vanguard.
+
+@reichswehr_affairs
+title: Reichswehr Affairs
+subtitle: If we hold the Defense Ministry, we can set our formal military policy.
+choose-if: advisor_action_timer == 0 and nsdap_in_government and reichswehr_minister_party == "NSDAP"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not nsdap_in_government : The NSDAP is not in government. ?][? if reichswehr_minister_party != "NSDAP": The NSDAP does not hold the Reichswehr ministry. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: nsdap_military_policy
+
+@support_peoples_movement
+title: Foster a Catch-All People's Movement
+subtitle: Can we expand our party footprint far beyond our early radical base?
+view-if: catch_all_movement == 0
+choose-if: catch_all_support <= 4 and advisor_action_timer = 0 and catch_all_movement == 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if catch_all_support > 4: There is already substantial support for a broad electoral strategy. ?]
+on-arrival: advisor_action_timer = 6; catch_all_support += 1
+
+We are building up internal support for evolving into a mass, cross-class movement.
+
+@build_peoples_movement
+title: Implementing the Catch-All Strategy
+subtitle: Commit the party to expanding beyond industrial or purely rural niches.
+view-if: catch_all_movement == 0
+choose-if: catch_all_support >= 3 and advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if catch_all_support < 3: There is not enough support for this organizational shift yet. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1;
+go-to: catch_all_movement_adoption
+
+@campaigning_peoples_movement
+title: Campaigning as a Catch-All Party
+subtitle: Exploit our mass structures to aggressively target non-traditional demographics.
+view-if: catch_all_movement = 1
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6;
+go-to: catch_all_party_campaigning
