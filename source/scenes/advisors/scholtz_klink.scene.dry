@@ -1,0 +1,45 @@
+title: Gertrud Scholtz-Klink
+is-pinned-card: true
+tags: advisor, traditionalist
+card-image: img/portraits/ScholtzKlinkGertrud.jpg
+view-if: scholtz_klink_advisor = 1
+new-page: true 
+
+= Gertrud Scholtz-Klink
+
+Scholtz-Klink is the leader of the NS-Frauenschaft (National Socialist Women's League). She approaches mobilization through the lens of traditional family structures, serving as our primary bridge to conservative housewives and rural mothers.
+
+- @emergency_street_collections
+- @winter_relief
+- @organizing_housewives
+- @root: Return to main
+
+@emergency_street_collections
+title: Emergency Street Collections
+subtitle: An emergency infusion of party funds through aggressive public drives.
+view-if: difficulty < 1
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; nsdap_funds += party_dues
+
+We have gained +[+ party_dues +] funds through aggressive canister collections.
+
+@winter_relief
+title: Expand the Winter Relief (Winterhilfswerk)
+subtitle: -1 nsdap_funds
+choose-if: nsdap_funds > 0 and advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if nsdap_funds < 0: Not enough funds. ?]
+on-arrival: nsdap_funds -= 1; national_socialist_welfare += 1; unemployed_nsdap += 5*(1 - internal_party_dissent); working_class_nsdap += 3*(1-internal_party_dissent); working_class_nsdap += 2*(1-internal_party_dissent) if black_thursday_seen; advisor_action_timer = 6;
+
+We have increased funding to our Winter Relief program. [? if black_thursday_seen > 0 : In an age of economic crisis, providing fuel and hot meals directly to the poor allows us to easily out-mobilize the state welfare systems among the unemployed. ?]
+
+@organizing_housewives
+title: Mobilizing Conservative Women
+subtitle: Target women by championing their traditional household and maternal roles.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: traditional_gender_support += 1; working_class_nsdap += 4*(1-internal_party_dissent); rural_nsdap += 3*(1-internal_party_dissent); old_middle_nsdap += 3*(1-internal_party_dissent); advisor_action_timer = 6
+
+Scholtz-Klink's strategies for organizing women are aimed squarely at housewives and rural mothers, celebrating their traditional domestic duties. We argue that our national program will safeguard the household and protect families from Marxist collapse.
+
+[? nsdap_votes < 50 : Unfortunately, millions of women still disproportionately trust the Catholic Center Party to protect family values. ?]
