@@ -1,0 +1,51 @@
+title: Gottfried Feder
+is-pinned-card: true
+tags: advisor, orthodox_ideologue
+card-image: img/portraits/FederGottfried.jpg
+view-if: feder_advisor = 1
+new-page: true
+#face-image: img/portraits/FederGottfried.jpg
+
+= Gottfried Feder
+
+Feder is the chief economic theorist of the party and author of our 25-Point Program. An engineer by trade, his radical views on breaking the "Thralldom of Interest" form the bedrock of National Socialist economic doctrine.
+
+- @against_strasser_revisionism
+- @enforce_unalterable_program
+- @economics_ministry_
+- @breaking_interest_slavery_
+- @root: Return to main
+
+@against_strasser_revisionism
+title: Against Strasserite Revisionism
+subtitle: Enforce the orthodox Bamberg line against the northern wing's attempts to rewrite our platform.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 5; advisor_action_time = time; orthodox_strength += 15; hitler_loyalist_strength += 10; strasser_strength -= 15; strasser_dissent += 5; orthodox_dissent -= 10
+
+Feder forcefully reasserts that the 25-Point Program is set in stone. This severely undercuts Gregor Strasser's attempts to pivot the party toward a structural socialist program, solidifying the Munich leadership's control over party doctrine.
+
+@enforce_unalterable_program
+title: Enforce the Unalterable Program
+subtitle: Defend the original platform against Strasser's alternative urban worker manifestos.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if strasser_influence < 40 : The Strasser faction is too weak to threaten the core program. ?]
+choose-if: advisor_action_timer = 0 and strasser_influence >= 40
+on-arrival: advisor_action_timer = 6; party_ideological_unity += 10; strasser_influence -= 10; orthodox_dissent -= 10
+
+Feder publishes a series of ideological broadsides reminding the Gauleiters that any deviation from the 1920 program is an act of factional betrayal. Strasser's influence among the regional offices drops as the party rallies around the original text.
+
+@economics_ministry_
+title: Fiscal and Monetary Policy
+subtitle: As State Secretary of Economics, Feder can target speculative finance capital.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if nsdap_in_government = 0 : NSDAP not in government. ?] [? if economic_minister_party != "NSDAP" : The NSDAP does not control the economics ministry. ?]
+choose-if: advisor_action_timer == 0 and nsdap_in_government == 1 and economic_minister_party == "NSDAP"
+on-arrival: advisor_action_timer = 6; fiscal_policy_timer -= 6; last_advisor_action = 1; big_business_alienated += 5
+go-to: nsdap_fiscal_policy
+
+@breaking_interest_slavery_
+title: Breaking the Thralldom of Interest
+subtitle: Enact policies to heavily regulate banks and nationalize speculative finance.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if nsdap_in_government = 0 : NSDAP not in government. ?] [? if economic_minister_party != "NSDAP" or labor_minister_party != "NSDAP" : We do not have the necessary government ministers. ?]
+choose-if: advisor_action_timer == 0 and nsdap_in_government == 1 and economic_minister_party == "NSDAP" and labor_minister_party == "NSDAP"
+on-arrival: advisor_action_timer = 6; interest_abolition_timer -= 10; last_advisor_action = 1; national_socialist_economics_implemented += 1
+go-to: breaking_interest_slavery
