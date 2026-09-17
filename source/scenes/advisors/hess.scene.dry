@@ -9,10 +9,12 @@ view-if: hess_advisor = 1
 
 Hess is the dedicated Secretary to the Führer. Entirely devoted to the leadership principle, he manages the day-to-day administration of the party and enforces absolute obedience.
 
+
 - @transcribe_mein_kampf
 - @bourgeois_fundraising
 - @fuehrer_principle
 - @root: Return to main
+
 
 @transcribe_mein_kampf
 title: Ideological Consolidation (Mein Kampf)
