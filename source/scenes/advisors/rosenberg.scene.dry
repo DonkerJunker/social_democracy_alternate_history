@@ -1,0 +1,47 @@
+title: Alfred Rosenberg
+is-pinned-card: true
+tags: advisor, ideologue
+card-image: img/portraits/RosenbergAlfred.jpg
+view-if: rosenberg_advisor = 1
+new-page: true 
+
+= Alfred Rosenberg
+
+Rosenberg is the head of the Kampfbund für deutsche Kultur (Militant League for German Culture) and our chief racial philosopher. 
+
+
+- @suppress_minorities_
+- @traditional_family_
+- @racial_science_funding
+- @root: Return to main
+
+
+@suppress_minorities_
+title: Cultural Cleansing
+subtitle: Enact policies to suppress sexual minorities and degenerate art.
+choose-if: advisor_action_timer = 0 and nsdap_in_government and conservative_coalition >= 50
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? [? if not nsdap_in_government : The NSDAP is not currently in government. ?][? if conservative_coalition < 50 : We do not have the votes from our right-wing partners to enact these decrees. ?]
+on-arrival: advisor_action_timer = 6; cultural_reaction_timer -= 11; last_advisor_action = 1; liberal_dissent += 15
+go-to: cultural_purges
+
+We have initiated a harsh crackdown on cosmopolitan centers and progressive institutes, systematically purging what we deem "degenerate art" from public view.
+
+@traditional_family_
+title: Re-engineer Family Roles
+subtitle: Enact policies to remove women from public careers and subsidize large rural families.
+choose-if: advisor_action_timer = 0 and nsdap_in_government
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not nsdap_in_government : The NSDAP is not currently in government. ?]
+on-arrival: advisor_action_timer = 6; womens_subjugation_timer -= 10; last_advisor_action = 1; birthrate_incentives += 1
+go-to: traditional_gender_roles
+
+We have implemented aggressive tax incentives for large rural families while initiating policies to return women to traditional domestic roles.
+
+@racial_science_funding
+title: Fund Racial Hygiene
+subtitle: Redirect state education and scientific funding toward eugenics and racial theory.
+choose-if: advisor_action_timer = 0 and nsdap_in_government and interior_minister_party = "NSDAP" and chancellor_party = "NSDAP"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not nsdap_in_government : The NSDAP is not currently in government. ?][? if interior_minister_party != "NSDAP": This requires the Interior Ministry to dictate education policy. ?][? if chancellor_party != "NSDAP": The Chancellor must be an NSDAP member. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1; academic_nazification += 10
+go-to: education_science.racial_hygiene
+
+We have stripped state funding from established democratic institutions and successfully redirected university research grants toward the study of racial hygiene and eugenics.
