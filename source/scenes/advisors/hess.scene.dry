@@ -1,0 +1,47 @@
+title: Rudolf Hess
+is-pinned-card: true 
+tags: advisor, loyalist
+card-image: img/portraits/HessRudolf.jpg
+new-page: true
+view-if: hess_advisor = 1
+
+= Rudolf Hess
+
+Hess is the dedicated Secretary to the Führer. Entirely devoted to the leadership principle, he manages the day-to-day administration of the party and enforces absolute obedience.
+
+- @transcribe_mein_kampf
+- @bourgeois_fundraising
+- @fuehrer_principle
+- @root: Return to main
+
+@transcribe_mein_kampf
+title: Ideological Consolidation (Mein Kampf)
+subtitle: Capitalize on Hess's role in transcribing and editing the Führer's manifesto to unify party doctrine.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if mein_kampf_distribution_maxed == 1 : Mein Kampf is already standard reading for every party member. ?]
+choose-if: advisor_action_timer == 0 and mein_kampf_distribution_maxed == 0
+on-arrival: advisor_action_timer = 6; party_ideological_unity += 15; hitler_loyalty += 10; strasser_influence -= 5; nsdap_funds += 3
+
+Hess leverages his deep editorial knowledge of *Mein Kampf* to standardize party education. By distributing the text aggressively to new recruits, we strengthen the cult of personality around Hitler, though this alienates the Strasserist wing who prefer their own socialist pamphlets.
+
+
+@bourgeois_fundraising
+title: Upper-Class Fundraising
+subtitle: Utilize Hess's respectable background to court wealthy industrialists and bankers.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer == 0 
+on-arrival: advisor_action_timer = 6; nsdap_funds += 25; capitalist_tolerance += 10; strasser_influence -= 5
+
+Hess uses his academic credentials and bourgeois connections to reassure nervous elites that the party is a safe bulwark against Communism. Significant financial backing flows into the party treasury, but the radical SA and Strasserites grow suspicious of these capitalist ties.
+
+
+@fuehrer_principle
+title: Enforce the Führerprinzip
+subtitle: Suppress internal bickering and demand absolute loyalty to the Munich leadership.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; internal_party_dissent -= 15; strasser_influence -= 5; roehm_influence -= 5; hitler_loyalty += 10
+
+We have cracked down on factionalism. Hess has issued strict decrees reminding the regional Gauleiters that the word of the Führer is absolute law.
+
+
+
