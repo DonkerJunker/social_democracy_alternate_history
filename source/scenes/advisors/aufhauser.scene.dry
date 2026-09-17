@@ -1,51 +1,51 @@
-title: Siegfried Aufhäuser
+title: Gregor Strasser
 is-pinned-card: true
-tags: advisor, reformist
-card-image: img/portraits/AufhäuserSiegfried.jpg
-view-if: aufhauser_advisor = 1
+tags: advisor, strasserist
+card-image: img/portraits/StrasserGregor.jpg
+view-if: strasser_advisor = 1
 new-page: true 
 
-= Siegfried Aufhäuser
+= Gregor Strasser
 
-Aufhäuser is a leader of the AfA-Bund, the federation of socialist white-collar trade unions.
+Strasser is a Reich Organization Leader of the party and champion of our urban, anti-capitalist northern wing.
 
-- @white_collar
-- @union_unity
-- @crisis
-- @moderate_economic_plan
+- @worker_cells
+- @faction_truce
+- @crisis_socialism
+- @strasser_economic_plan
 - @root: Return to main
 
-@white_collar
-title: Organizing white-collar workers
-subtitle: Improve our standing among the new middle class.
+@worker_cells
+title: Organizing the NSBO
+subtitle: Win over the industrial urban working class.
 choose-if: advisor_action_timer <= 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] 
-on-arrival: advisor_action_timer = 6; new_middle_spd += 6*(1-dissent);
+on-arrival: advisor_action_timer = 6; working_class_nsdap += 6 * (1 - internal_party_dissent);
 
-We have increased our organizing among white-collar workers.
+We have ramped up our anti-capitalist rhetoric and factory leafleting to win over blue-collar laborers.
 
-@union_unity
-title: Union-party coordination
-subtitle: Reduce dissent among the unions.
+@faction_unity
+title: Factional mediation
+subtitle: De-escalate friction between the Northern and Southern party offices.
 choose-if: advisor_action_timer <= 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; labor_dissent -= 10;
+on-arrival: advisor_action_timer = 6; internal_party_dissent -= 10;
 
-We have reduced tensions with the Labor faction.
+Strasser has used his organizational leverage to temporarily smooth over tensions with Hitler's Munich faction.
 
-@crisis
-title: Addressing the economic crisis
-subtitle: Aufhäuser can help support a left-wing economic program.
-choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1 and nationalization_support <= 3
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if nationalization_adopted > 0 : We have already adopted the Left plan. ?]
+@crisis_socialism
+title: Push for the "Socialist" Program
+subtitle: Strasser can pivot the party toward aggressive state-socialism.
+choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1 and left_wing_nsdap_support <= 3
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : The capitalist economy has not yet collapsed. ?][? if radical_nationalization_adopted > 0 : We have already adopted the Strasser Program. ?]
 on-arrival: advisor_action_timer = 6; 
-go-to: crisis_program.support_left 
+go-to: crisis_program.support_strasser_left
 
-@moderate_economic_plan
-title: Support the reformist economic plan
-subtitle: Aufhäuser can also support a moderate economic plan.
-choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if moderate_economic_plan = 0 : We have already adopted the reformist economic plan. ?] [? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?]
+@strasser_economic_plan
+title: Support the moderate national plan
+subtitle: Strasser can also pitch a pragmatic economic program to work with Schleicher.
+choose-if: advisor_action_timer = 0 and corporate_compromise_adopted = 0 and black_thursday_seen = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if strasser_economic_plan == 0 : We have already committed to our economic framework. ?] [? if black_thursday_seen == 0 : The capitalist economy has not yet collapsed. ?]
 on-arrival: advisor_action_timer = 6
-go-to: crisis_program.support_moderate
+go-to: crisis_program.support_strasser_moderate
 
