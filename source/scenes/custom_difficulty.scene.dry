@@ -1,11 +1,11 @@
 title: Customize Difficulty
 
-# difficulty settings:
-# 1. Fundraising income:
-# 2. Annual income:
-# 3. Initial dissent:
-# 4. Initial inter-party relations:
-# 5. Hindenburg removal enabled:
-# 6. Initial Hindenburg relations:
-# 7. WTB difficulty:
-# 8. Enable saving/loading:
+# difficulty settings: Normal
+# 1. Fundraising income: Medium-Low
+# 2. Annual income: Low
+# 3. Initial dissent: High
+# 4. Initial inter-party relations: Hostile / Non-Existent
+# 5. Hindenburg removal enabled: False / Disabled
+# 6. Initial Hindenburg relations: Very Low / Hostile
+# 7.  Autarky / Rearmament difficulty: High
+# 8. Enable saving/loading: Optional
