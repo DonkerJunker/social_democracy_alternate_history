@@ -1,0 +1,41 @@
+title: Hermann Göring
+is-pinned-card: true
+tags: advisor, legalist
+card-image: img/portraits/GoeringHermann.jpg
+view-if: goering_advisor = 1
+new-page: true 
+
+= Hermann Göring
+
+Göring [? if nsdap_reichstag_presidency = 1 : is ?][? if nsdap_reichstag_presidency = 0 : was ?] the President of the Reichstag. A charismatic war hero, he acts as our aristocratic ambassador to the high society and conservative establishment.
+
+- @bourgeois_maneuver
+- @prussian_infiltration
+- @dissolve_parliament
+- @root: Return to main
+
+@bourgeois_maneuver
+title: Courting the Establishment
+subtitle: Göring can manipulate our relationships with the traditional conservative and centrist parties to tolerate us.
+choose-if: advisor_action_timer <= 0 and (nsdap_in_government or seeking_toleration or in_harzburg_front)
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if not nsdap_in_government : The NSDAP is completely isolated from government affairs. ?]
+on-arrival: advisor_action_timer = 6; establishment_suspicion -= 1 if nsdap_in_government = 1 and establishment_suspicion > 0; dnvp_relation += 6; z_relation += 4; bvp_relation += 4; strasser_influence -= 2
+
+We have improved our leverage with the Conservative (DNVP) and Center (Zentrum) parties, convincing them that we are a respectable alternative to the Marxist threat.
+
+@prussian_infiltration
+title: Subverting the Prussian Police
+subtitle: Using our leverage over the central government or via the Prussian Coup, Göring can purge and nazify the Prussian security apparatus.
+choose-if: advisor_action_timer <= 0 and papen_coup_seen = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if papen_coup_seen == 0 : The democratic SPD bulwark in Prussia has not yet been broken. ?]
+on-arrival: advisor_action_timer = 6; prussian_police_nazification += 15; sa_militancy += 5; last_advisor_action = 1
+go-to: prussian_gestapo_formation
+
+@dissolve_parliament
+title: Force Dissolution of the Reichstag
+subtitle: As Reichstag President, use procedural tricks to force a snap election while our popularity is high.
+unavailable-subtitle: [? if chancellor != "Hitler" and reichstag_president != "Göring" : We do not hold the Chancellorship or the Reichstag Presidency. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer == 0 and (chancellor == "Hitler" or reichstag_president == "Göring")
+on-arrival: advisor_action_timer = 6; next_election_time = time + 2 if next_election_time > time+2; next_election_month = month + 2 if next_election_time >= time+2; next_election_year = year if next_election_time >= time+2; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
+
+We have successfully outmaneuvered the chamber and forced a dissolution. New snap elections are set for [+ next_election_month : month +] [+ next_election_year +].
