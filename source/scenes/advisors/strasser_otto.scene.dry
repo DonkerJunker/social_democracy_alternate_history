@@ -1,0 +1,32 @@
+title: Otto Strasser
+is-pinned-card: true
+tags: advisor, left
+card-image: img/portraits/StrasserOtto.jpg
+view-if: levi_advisor = 1
+new-page: true 
+
+= Otto Strasser
+
+Otto Strasser is the leading intellectual of the party's revolutionary socialist wing, publishing radical anti-capitalist theory through his Kampfverlag.
+
+- @building_the_ns_left
+- @kampfverlag_agitation
+- @root: Return to main
+
+@building_the_ns_left
+title: Building the National Socialist Left
+subtitle: Push the party toward its anti-capitalist, revolutionary roots.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; ns_left_strength += 10; hitler_dissent += 8; bourgeoisie_nsdap -= 3
+
+We have strengthened the socialist faction within the party. This raises deep concern among Hitler and the Munich loyalists, who fear losing their bourgeois financiers.
+
+@kampfverlag_agitation
+title: Radicalizing the SA
+subtitle: Use our printing presses to influence and radicalize the SA into adopting a more "strasserist" stance.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; ns_left_strength += 5; sa_radicalization += 10; hitler_dissent += 12;
+
+The Kampfverlag's publications are widely read in the Berlin SA. We are successfully exposing the SA to the true socialist revolution and their loyalties are quietly shifting away from the party line.  
