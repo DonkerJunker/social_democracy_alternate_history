@@ -1,0 +1,44 @@
+title: Joseph Goebbels
+is-pinned-card: true
+tags: advisor, propaganda
+card-image: img/portraits/GoebbelsJoseph.jpg
+view-if: goebbels_advisor = 1
+new-page: true
+#face-image: img/portraits/GoebbelsJoseph.jpg
+
+= Joseph Goebbels
+
+Joseph Goebbels is the Gauleiter of Berlin and the chief architect of the party's modern propaganda machine. He favors aggressive street agitation, striking visual branding, and absolute psychological warfare against the Weimar system.
+
+- @sa_mobilization
+- @pioneer_propaganda
+- @marxist_urgency
+- @root: Return to main
+
+@sa_mobilization
+title: Mobilize the Berlin SA
+subtitle: Deploy the Stormtroopers into hostile red strongholds. 
+choose-if: advisor_action_timer == 0 and modern_propaganda_machine_formed
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if modern_propaganda_machine_formed == 0 : The modern propaganda machine has not yet been formed. ?]
+on-arrival: advisor_action_timer = 6; sa_strength += 200 * workers_nsdap / (workers_spd + workers_kpd + workers_nsdap + workers_z + workers_dnvp + workers_other); nationalism += 2;
+
+Goebbels' aggressive rhetoric rallies thousands of desperate young men into the ranks of the SA, transforming them into a highly visible political force on the streets.
+
+
+@pioneer_propaganda
+title: Launch Modern Propaganda Machine
+subtitle: Centralize party messaging using bold design, records, and aggressive branding.
+choose-if: advisor_action_timer == 0 and modern_propaganda_machine_formed == 0 and marxist_urgency >= 2
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if modern_propaganda_machine_formed : The modern propaganda machine is already operational. ?][? if marxist_urgency < 2 : The party does not yet see the immediate necessity of total psychological mobilization. ?]
+on-arrival: advisor_action_timer = 6; sa_strength += 50; marxist_urgency += 1; modern_propaganda_machine_formed = 1;
+go-to: confronting_marxists.propaganda_offensive 
+
+
+@marxist_urgency
+title: Sound the Alarm Against the KPD
+subtitle: By hyping the threat of a violent Communist uprising, we can terrorize voters into our camp.
+choose-if: advisor_action_timer == 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; marxist_urgency += 1; sa_militancy += 0.01; workers_spd -= 2 * (1 - dissent); workers_kpd -= 2 * (1 - dissent);
+
+We have saturated the press with warnings of an imminent Bolshevik terror campaign. This instills panic in the populace, hardening the militancy of our street fighters and drawing frightened voters away from the Marxist parties.
