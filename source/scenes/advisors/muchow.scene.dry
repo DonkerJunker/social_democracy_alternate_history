@@ -1,0 +1,36 @@
+title: Reinhold Muchow
+is-pinned-card: true
+tags: advisor, labor
+card-image: img/portraits/MuchowReinhold.jpg
+view-if: muchow_advisor = 1 and year >= 1931
+new-page: true 
+
+= Reinhold Muchow
+
+Muchow is the chief architect of the NSBO (National Socialist Factory Cell Organization), focusing on organizing anti-marxist cells within the industrial workforce.
+
+- @nsbo_cells
+- @weaponize_strikes
+- @root: Return to main
+
+# CHANGE: Muchow only becomes available as an active advisor card from January 1931 onward
+# CHANGE: Locked behind both a time gate (Late 1931+) and a high depression threshold
+
+@nsbo_cells
+title: Build Factory Cells
+subtitle: Expand the NSBO using the Muchow-Plan cell structure.
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; nsbo_strength += 3; workers_nsdap += 4 * (1 - dissent);
+
+We have systematically planted NSBO cells across heavy industry, leveraging the economic downturn to peel nationalist-leaning workers away from the socialist Free Trade Unions.
+
+
+@weaponize_strikes
+title: Exploit Labor Unrest
+subtitle: Intervene in strikes to hijack the KPD’s momentum.
+choose-if: advisor_action_timer <= 0 and year >= 1931 and depression_severity >= 3
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if year < 1931 : The party leadership strictly forbids participating in proletarian strikes before 1931. ?][? if depression_severity < 3 : The labor movement is not desperate enough for wildcat tactics. ?]
+on-arrival: advisor_action_timer = 6; workers_nsdap += 5; bourgeoisie_nsdap -= 4; sa_strength += 2; hitler_dissent += 10;
+
+By leading radical wildcat strikes alongside communist workers, the NSBO wins massive popularity among the desperate unemployed. However, our corporate backers in the Ruhr are deeply alarmed by this "National Bolshevism," creating severe friction with Hitler's leadership.
