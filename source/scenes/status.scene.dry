@@ -20,20 +20,22 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-SPD position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
+NSDAP position: [? if nsdap_toleration : toleration ?][? if nsdap_in_government : in government - ?][? if nsdap_toleration == 0 and nsdap_in_government == 0 and nsdap_caretaker == 0 : opposition ?][? if nsdap_caretaker : caretaker government ?]
+[? if in_harzburg_front and nsdap_in_government: Harzburg Front Coalition ?][? if in_right_coalition and nsdap_in_government: Right-wing Coalition ?][? if in_presidential_cabinet and nsdap_in_government: Presidential Cabinet ?][? if in_nsdap_majority and nsdap_in_government: NSDAP Majority Dictatorship ?][? if in_minority_government and nsdap_in_government: minority government ?][? if in_emergency_government and nsdap_in_government: emergency government ?]
 
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
+[? if nsdap_in_government and not in_nsdap_majority : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+[? if nsdap_in_government and in_harzburg_front: DNVP coalition dissent: [+ dnvp_coalification_dissent : coalition_dissent +] ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
 = Government
 
-President: [+ president +]
+[? if political_title == "fuhrer" : Führer und Reichskanzler: [+ chancellor +] ?]
+[? if political_title == "reichskanzler" : Reichskanzler: [+ chancellor +] ([+ chancellor_party +]) ?]
+[? if not political_title : Chancellor: [+ chancellor +] ([+ chancellor_party +]) ?]
 
-Chancellor: [+ chancellor +] ([+ chancellor_party +])
+[? if political_title != "fuhrer" : President: [+ president +] ?] 
 
 Reichstag composition:
 
@@ -60,6 +62,24 @@ Others: [+ other_r +]%
 Next election: [+ next_election_month : month +] [+ next_election_year +]
 
 = Economics
+
+
+= Dictatorship Consolidation
+
+[? if enabling_act_passed == 1 : [X] Enabling Act: Passed (Decree Power Active) ?][? if enabling_act_passed == 0 : [ ] Enabling Act: Not Passed (Tied to Reichstag) ?]
+
+Gleichschaltung (Coordination): [+ gleichschaltung_level +]%
+State Police Control: [+ police_control +]%
+Media & Referendum Control: [+ referendum_readiness +]%
+
+= Deep State & Paramilitaries
+
+Hindenburg's Health: [+ hindenburg_health +]% [? if hindenburg_health < 30 : (Failing Fast!) ?]
+Reichswehr (Army) Loyalty: [+ reichswehr_loyalty +]% 
+
+SA Radicalism (Second Revolution Demands): [+ sa_radicalism +]%
+[? if sa_radicalism > 75 : !⚠️ WARNING: The Army is planning a coup to suppress the SA! ⚠️! ?]
+SS Personnel Strength: [+ ss_strength +] thousand
 
 Inflation: [+ inflation_2 +]%
 
