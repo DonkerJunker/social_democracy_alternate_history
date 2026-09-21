@@ -8,14 +8,9 @@ if (Q.advisor_action_timer <= 0) {
     Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
 } else {
     Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
-}Like this?                                                                                                                     on-arrival: {!
-if (Q.advisor_action_timer <= 0) {
-    Q.pinnedCardsDescription = 'Advisors - an action is available.';
-} else if (Q.advisor_action_timer == 1) {
-    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
-} else {
-    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
 }
+
+// --- NSDAP MOD CUSTOM SYSTEMS ---
 Q.enabling_act_passed = 0;
 Q.gleichschaltung_level = 0;
 Q.police_control = 0;
@@ -27,7 +22,6 @@ Q.public_panic = 20;
 Q.referendum_readiness = 0;
 Q.political_title = "";
 Q.total_control = 0;
-!}                                                                                                                                                    Nothing is missing right?
 !}
 max-cards: 3
 
