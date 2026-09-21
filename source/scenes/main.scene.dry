@@ -30,6 +30,13 @@ Q.munich_dissent = 0;         // Completely loyal to the Führerprinzip
 
 Q.sa_faction_strength = 20;   // Röhm's street fighters
 Q.sa_faction_dissent = 10;    // Restless and wanting more direct action
+Q.strasserites_split = 0;
+Q.sa_purged_rebel = 0;
+Q.munich_shattered = 0;
+
+Q.strasser_votes = 0;
+Q.sa_rebel_votes = 0;
+Q.munich_rebel_votes = 0;
 !}
 max-cards: 3
 
