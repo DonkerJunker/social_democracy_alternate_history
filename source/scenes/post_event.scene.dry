@@ -14,6 +14,22 @@ for (var c of Q.classes) {
         }
     }
 }
+// Check if Strasserites quit the party
+if (Q.strasser_dissent >= 100 && Q.strasserites_split == 0) {
+    Q.strasserites_split = 1;
+    Q.nsdap_votes -= 8; // Wipes out Nazi votes as they leave
+    Q.strasser_votes = 8;
+    Q.strasser_strength = 0;
+}
+
+// Check if SA Faction rebels/breaks away
+if (Q.sa_faction_dissent >= 100 && Q.sa_purged_rebel == 0) {
+    Q.sa_purged_rebel = 1;
+    Q.nsdap_votes -= 5;
+    Q.sa_rebel_votes = 5;
+    Q.sa_faction_strength = 0;
+    Q.sa_strength_2 = Q.sa_strength_2 * 0.5; // You lose half your street muscle instantly!
+}
 
 Q.pro_republic = Math.round(Q.pro_republic);
 Q.nationalism = Math.round(Q.nationalism);
