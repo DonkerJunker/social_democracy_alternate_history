@@ -22,6 +22,14 @@ Q.public_panic = 20;
 Q.referendum_readiness = 0;
 Q.political_title = "";
 Q.total_control = 0;
+Q.strasser_strength = 30;     // The Left wing still has strong regional backing in 1928
+Q.strasser_dissent = 15;      // They are suspicious of Hitler's legalist strategy
+
+Q.munich_strength = 50;       // Hitler's loyal core holds the majority power
+Q.munich_dissent = 0;         // Completely loyal to the Führerprinzip
+
+Q.sa_faction_strength = 20;   // Röhm's street fighters
+Q.sa_faction_dissent = 10;    // Restless and wanting more direct action
 !}
 max-cards: 3
 
