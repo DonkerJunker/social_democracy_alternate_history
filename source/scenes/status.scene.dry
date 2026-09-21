@@ -93,38 +93,30 @@ Economic growth: [+ economic_growth_2 +]%
 
 @politics
 
-= Inter-party Relations
 
+{!<span class="tooltip-text" title="German National People's Party (Your primary right-wing allies/rivals)">DNVP</span>!}: [+ dnvp_relation : relationships +]
+
+{!<span class="tooltip-text" title="Social Democratic Party of Germany (Your primary enemy)">SPD</span>!}: [+ spd_relation : relationships +]
+
+{!<span class="tooltip-text" title="Communist Party of Germany (The street adversaries)">KPD</span>!}: [+ kpd_relation : relationships +]
 
 {!<span class="tooltip-text" title="Center Party">Z</span>!}: [+ z_relation : relationships +]
 
-{!<span class="tooltip-text" title="German Democratic Party">!}[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]{!</span>!}: [+ ddp_relation : relationships +]
-
 {!<span class="tooltip-text" title="German People's Party">DVP</span>!}: [+ dvp_relation : relationships +]
 
-{!<span class="tooltip-text" title="Communist Party of Germany">KPD</span>!}: [+ kpd_relation : relationships +]
+= Internal Factions of the NSDAP
 
-{!<span class="tooltip-text" title="German National People's Party">DNVP</span>!}: [+ dnvp_relation : relationships +]
+{!<span class="tooltip-text" title="Led by Gregor and Otto Strasser. This faction champions the 'Socialist' aspect of National Socialism, advocating for anti-capitalist, worker-focused policies and strike support.">Strasser / Left Wing</span>!} strength: [+ strasser_strength : strength +], dissent: [+ strasser_dissent : dissent +]
 
-{!<span class="tooltip-text" title="National-Socialist German Worker's Party (Nazis)">NSDAP</span>!}: [+ nsdap_relation : relationships +]
+{!<span class="tooltip-text" title="The central party apparatus dedicated entirely to Hitler's absolute authority and the Führerprinzip.">Hitler Loyalist / Munich Core</span>!} strength: [+ munich_strength : strength +], dissent: [+ munich_dissent : dissent +]
 
-= Internal Factions of the SPD
-
-{!<span class="tooltip-text" title="The Left is interested in radical, transformative policies and cooperation with the KPD.">Left</span>!} strength: [+ left_strength : strength +], dissent: [+ left_dissent : dissent +]
-
-{!<span class="tooltip-text" title="The Center is a faction of Center Marxists, between reform and revolution.">Center</span>!} strength: [+ center_strength : strength +], dissent: [+ center_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Labor's goal is economic reform and benefits for organized workers.">Labor</span>!} strength: [+ labor_strength : strength +], dissent: [+ labor_dissent : dissent +]
-
-{!<span class="tooltip-text" title="Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy.">Reformist</span>!} strength: [+ reformist_strength : strength +], dissent: [+ reformist_dissent : dissent +]
-
-[? if neorevisionism > 0 : Neorevisionist strength: [+ neorevisionist_strength : strength +], dissent: [+ neorevisionist_dissent : dissent +] ?]
+{!<span class="tooltip-text" title="Led by Ernst Röhm. The Sturmabteilung views themselves as a revolutionary army that wants to completely replace the traditional German military.">Paramilitary (SA) Wing</span>!} strength: [+ sa_faction_strength : strength +], dissent: [+ sa_faction_dissent : dissent +]
 
 
 @paramilitaries
 on-arrival: {!
-if (Q.rb_strength) {
-    Q.rb_strength_2 = Q.rb_strength.toFixed(1);
+if (Q.sa_strength) {
+    Q.sa_strength_2 = Q.rb_strength.toFixed(1);
 }
 if (Q.rfb_strength) {
     Q.rfb_strength_2 = Q.rfb_strength.toFixed(1);
@@ -132,30 +124,30 @@ if (Q.rfb_strength) {
 if (Q.sh_strength) {
     Q.sh_strength_2 = Q.sh_strength.toFixed(1);
 }
-if (Q.sa_strength) {
-    Q.sa_strength_2 = Q.sa_strength.toFixed(1);
+if (Q.rb_strength) {
+    Q.rb_strength_2 = Q.sa_strength.toFixed(1);
 }
 !}
 
 = Paramilitaries
 
-{!<span class="tooltip-text" title="The Reichsbanner Schwarz-Rot-Gold is a popular organization for defending democracy, mostly affiliated with the SPD.">Reichsbanner</span>!} Strength: [+ rb_strength_2 +] thousand
-
-Reichsbanner Militarization: [+ rb_militancy : militancy +]
-
-{!<span class="tooltip-text" title="The RFB (Rotfrontkämpferbund) is a communist group associated with the KPD.">RFB</span>!} Strength: [+ rfb_strength_2 +] thousand
-
-RFB Militarization: [+ rfb_militancy : militancy +]
-
-{!<span class="tooltip-text" title="The Stahlhelm is a right-wing organization of war veterans associated with the DNVP.">Stahlhelm</span>!} Strength: [+ sh_strength_2 +] thousand
-
-Stahlhelm Militarization: [+ sh_militancy : militancy +]
-
-{!<span class="tooltip-text" title="The SA (Sturmabteilung) is the Nazi paramilitary.">SA</span>!} Strength: [+ sa_strength_2 +] thousand
+{!<span class="tooltip-text" title="The SA (Sturmabteilung) is our primary paramilitary street army, led by Ernst Röhm.">SA</span>!} Strength: [+ sa_strength_2 +] thousand
 
 SA Militarization: [+ sa_militancy : militancy +]
 
-= Official military/paramilitaries
+{!<span class="tooltip-text" title="The SS (Schutzstaffel) is our highly disciplined, elite ideological vanguard guard.">SS</span>!} Personnel Strength: [+ ss_strength +] thousand
+
+{!<span class="tooltip-text" title="The Stahlhelm is a nationalist organization of war veterans associated with the DNVP. Potential allies or rivals.">Stahlhelm</span>!} Strength: [+ sh_strength_2 +] thousand
+
+Stahlhelm Militarization: [+ sh_militancy : militancy +]
+
+{!<span class="tooltip-text" title="The Reichsbanner Schwarz-Rot-Gold is the democratic paramilitary front affiliated with the SPD. Our sworn enemies.">Reichsbanner</span>!} Strength: [+ rb_strength_2 +] thousand
+
+Reichsbanner Militarization: [+ rb_militancy : militancy +]
+
+{!<span class="tooltip-text" title="The RFB (Rotfrontkämpferbund) is the militant communist combat league associated with the KPD.">RFB</span>!} Strength: [+ rfb_strength_2 +] thousand
+
+RFB Militarization: [+ rfb_militancy : militancy +]
 
 Reichswehr: [+ reichswehr_strength +] thousand troops.
 
@@ -165,12 +157,12 @@ Prussian police: [+ prussian_police_strength +] thousand members.
 
 Prussian police loyalty: [+ prussian_police_loyalty : loyalty +]
 
-[? if spd_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
+[? if nsdap_in_government : Interior police loyalty: [+ interior_police_loyalty : loyalty +] ?]
 
 @polls
 on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
 Q.nationalism_disp = Math.round(Q.nationalism);
+Q.pro_republic_disp = Math.round(Q.pro_republic);
 Q.socialism_disp = Math.round(Q.socialism);
 !}
 
@@ -178,23 +170,26 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 (if the election were to be held now):
 
-SPD: [+ spd_votes +]%
+NSDAP: [+ nsdap_votes +]%
 
-[? if sapd_formed: SAPD: [+ sapd_votes +]% ?]
+DNVP: [+ dnvp_votes +]%
+
+DVP: [+ dvp_votes +]%
+
+[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ ddp_votes +]%
 
 Z + BVP: [+ z_votes +]%
 
 KPD: [+ kpd_votes +]%
 
-[? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ ddp_votes +]%
-
-DVP: [+ dvp_votes +]%
-
-DNVP: [+ dnvp_votes +]%
-
-NSDAP: [+ nsdap_votes +]%
+SPD: [+ spd_votes +]%
 
 Others: [+ other_votes +]%
+
+**Breakaway Splinter Parties:**
+[? if strasserites_split == 1 : * Kampfgemeinschaft Revolutionärer Nationalsozialisten (Strasserites): [+ strasser_votes +]% ?]
+[? if sa_purged_rebel == 1 : * Rebel SA Faction (Sturmrebell): [+ sa_rebel_votes +]% ?]
+[? if munich_shattered == 1 : * Völkisch Dissidents (Munich Mutineers): [+ munich_rebel_votes +]% ?]
 
 **Detailed results for each demographic**
 
@@ -209,5 +204,7 @@ Rural: SPD: [+ rural_spd_display +]%, Z: [+ rural_z_display +]%, KPD: [+ rural_k
 Unemployed: SPD: [+ unemployed_spd_display +]%, Z: [+ unemployed_z_display +]%, KPD: [+ unemployed_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ unemployed_ddp_display +]%, DVP: [+ unemployed_dvp_display +]%; DNVP: [+ unemployed_dnvp_display +]%, NSDAP: [+ unemployed_nsdap_display +]%, Others: [+ unemployed_other_display +]% [? if sapd_formed: SAPD: [+ unemployed_sapd_display +]% ?]
 
 Catholics: SPD: [+ catholics_spd_display +]%, Z: [+ catholics_z_display +]%, KPD: [+ catholics_kpd_display +]%, [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ catholics_ddp_display +]%, DVP: [+ catholics_dvp_display +]%; DNVP: [+ catholics_dnvp_display +]%, NSDAP: [+ catholics_nsdap_display +]%, Others: [+ catholics_other_display +]% [? if sapd_formed: SAPD: [+ catholics_sapd_display +]% ?]
+
+Support for Nationalism: [+ pro_nationalism_disp +]%
 
 Support for the Republic: [+ pro_republic_disp +]%
