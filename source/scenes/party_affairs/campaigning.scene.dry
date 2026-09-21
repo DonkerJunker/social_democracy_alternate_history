@@ -11,60 +11,59 @@ tags: party_affairs
 
 Whether or not we are in an electoral campaign, the party is always trying to broaden its voter base. Who should we focus our campaign efforts on?
 
-- @workers: The urban working class, our traditional support base.
+- @workers: The urban working class, traditionally loyal to the Marxists.
 - @new_middle: The "new middle class" of government employees and white-collar workers.
 - @old_middle: The "old middle class" of small independent businessmen and artisans.
-- @rural: Rural workers and small farmers, who have felt neglected by us in the past.
-- @unemployed: The unemployed.
-- @catholics: Catholics, who typically support the Center Party.
+- @rural: Rural workers and small farmers, who are highly receptive to our message.
+- @unemployed: The desperate masses of the unemployed.
+- @catholics: Catholics, who typically hold firm with the Center Party.
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
 @workers
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; resources -= 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
+unavailable-subtitle: Not enough funds.
+on-arrival: workers_nsdap += 4 * (1 - dissent); resources -= 1; strasser_strength += 2; strasser_dissent -= 2
 
-We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more difficult. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
+We campaign heavily in the factories and industrial hubs. Breaking the Marxist hold on the proletariat is tough, but our radical anti-capitalist rhetoric wins over some workers. This focus pleases the Strasserite wing of our party.
 
 @new_middle
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: new_middle_spd += 6*(1-dissent); new_middle_spd -= 4 if socialism <= 49 and peoples_party == 0; resources -= 1; peoples_party_support += 1;
+unavailable-subtitle: Not enough funds.
+on-arrival: new_middle_nsdap += 6 * (1 - dissent); resources -= 1; goering_strength += 1
 
-We have increased our campaigning among the new middle class. [? if socialism <= 49 and peoples_party == 0: The popular antipathy towards socialism among this group makes our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
+We focus our efforts on the white-collar workers and civil servants. They fear a communist revolution and are easily swayed by our promises of national renewal and stability.
 
 @old_middle
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: old_middle_spd += 5*(1-dissent); resources -= 1; old_middle_spd -= 3 if nationalism >= 51 and peoples_party == 0; peoples_party_support += 1
+unavailable-subtitle: Not enough funds.
+on-arrival: old_middle_nsdap += 8 * (1 - dissent); resources -= 1; old_middle_nsdap += 2 if nationalism >= 50
 
-We have increased our campaigning among the old middle class. [? if nationalism >= 51 and peoples_party == 0: The high levels of nationalism among this group make our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
+We target small shopkeepers, artisans, and independent businessmen. They are terrified of big corporate department stores and economic ruin, making them highly receptive to our protectionist, nationalist platform.
 
 @rural
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: rural_spd += 5*(1-dissent); rural_spd -= 3*(1-dissent) if peoples_party == 0; resources -= 1; peoples_party_support += 1; rural_spd += 3*(1-dissent) if rural_policy >= 2
+unavailable-subtitle: Not enough funds.
+on-arrival: rural_nsdap += 8 * (1 - dissent); resources -= 1; rural_nsdap += 3 if nationalism >= 50
 
-We have increased our campaigning among farmers. [? if peoples_party == 0: We have not historically campaigned much among the farmers, and they do not trust us. ?][? if peoples_party > 0: As a people's party, we have an easier time increasing support among farmers than before. ?][? if rural_policy >= 2 : Our rural policies have made it easier for us to build support among farmers. ?]
+We send party speakers out into the countryside. The farmers feel completely abandoned by the Weimar Republic's agricultural crisis. Our "Blood and Soil" rhetoric spreads rapidly here, securing a massive foothold.
 
 @unemployed
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-on-arrival: unemployed_spd += 6*(1-dissent); resources -= 1; unemployed_spd -= 3 if welfare < 0; unemployed_spd += 6*(1-dissent) if wtb_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
+unavailable-subtitle: Not enough funds.
+on-arrival: unemployed_nsdap += 8 * (1 - dissent); resources -= 1; sa_faction_strength += 2; sa_faction_dissent -= 3
 
-We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
+We target the millions of men left destitute by the depression. We offer them hot meals, purpose, and a uniform. While we win their votes, a huge portion of these recruits immediately join the SA street fighters, expanding Röhm's radical paramilitary wing.
 
 @catholics
-subtitle: -1 resources
+subtitle: -1 NSDAP Funds
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
-view-if: peoples_party == 1
-on-arrival: catholics_spd += 6*(1-dissent); resources -= 1
+unavailable-subtitle: Not enough funds.
+on-arrival: catholics_nsdap += 3 * (1 - dissent); resources -= 1
 
-We have increased our campaigning among Catholics.
+We attempt to make inroads with Catholic voters. It is incredibly difficult, as the local priests heavily instruct their congregations to remain loyal to the Center Party, but we manage to peel away a few conservative voters.
