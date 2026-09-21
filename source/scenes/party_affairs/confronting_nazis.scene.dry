@@ -30,10 +30,11 @@ The SA marches directly into working-class neighborhoods. Brutal street fights b
 @harzburg_front
 title: Form the Harzburg Front!
 subtitle: Rally the NSDAP, DNVP, and Stahlhelm into a united right-wing vanguard.
-view-if: nsdap_votes >= 15 and harzburg_front_formed == 0
-on-arrival: harzburg_front_formed = 1; nationalism += 5; nsdap_votes += 4 * (1 - dissent); dnvp_relation += 15; sa_faction_dissent -= 10; goering_strength += 5
+choose-if: nsdap_votes >= 15 and dnvp_relation >= 40 and harzburg_front_formed == 0
+unavailable-subtitle: [? if dnvp_relation < 40 : The DNVP despises us too much to negotiate. Improve relations first! ?][? if nsdap_votes < 15 : Our party isn't influential enough yet. ?]
+on-arrival: harzburg_front_formed = 1; nationalism += 5; nsdap_votes += 4 * (1 - dissent); dnvp_relation += 15; sa_faction_dissent -= 10;
 
-We establish a unified coalition at Bad Harzburg! The NSDAP, Alfred Hugenberg’s nationalist DNVP, and the massive Stahlhelm veterans' league stand side-by-side. We demand the immediate resignation of the democratic government. 
+We establish a unified coalition at Bad Harzburg! The NSDAP, Alfred Hugenberg’s nationalist DNVP, and the massive Stahlhelm veterans' league stand side-by-side. We demand the immediate resignation of the democratic government.
 
 What is the core pillar of our unified front?
 
