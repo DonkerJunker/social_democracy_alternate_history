@@ -83,6 +83,38 @@ for (var party of Q.parties) {
     Q[party+'_votes_display'] = Math.round(Q[party+'_normalized']*100);
 }
 
+// --- NSDAP MOD COALITION CALCULATIONS ---
+
+// 1. Harzburg Front (NSDAP + DNVP + Other right-wing splinters)
+Q.harzburg_seats = Q.nsdap_votes + Q.dnvp_votes + (Q.other_votes / 2); 
+if (Q.harzburg_seats >= 50) {
+    Q.harzburg_front = "Majority (" + Math.round(Q.harzburg_seats) + "%)";
+} else {
+    Q.harzburg_front = "Minority (" + Math.round(Q.harzburg_seats) + "%)";
+}
+
+// 2. National Concentration (NSDAP + DNVP + Center Party)
+Q.concentration_seats = Q.nsdap_votes + Q.dnvp_votes + Q.z_votes;
+if (Q.concentration_seats >= 50) {
+    Q.national_concentration = "Majority (" + Math.round(Q.concentration_seats) + "%)";
+} else {
+    Q.national_concentration = "Minority (" + Math.round(Q.concentration_seats) + "%)";
+}
+
+// 3. Right-wing Minority Cabinet (NSDAP + DNVP only, ruling by presidential decree)
+Q.right_minority_seats = Q.nsdap_votes + Q.dnvp_votes;
+if (Q.right_minority_seats >= 50) {
+    Q.right_minority_cabinet = "Majority (" + Math.round(Q.right_minority_seats) + "%)";
+} else {
+    Q.right_minority_cabinet = "Presidential Cabinet Supported (" + Math.round(Q.right_minority_seats) + "%)";
+}
+
+// 4. NSDAP Absolute Majority
+if (Q.nsdap_votes >= 50) {
+    Q.nsdap_majority_front = "Absolute Majority (" + Q.nsdap_votes + "%)";
+} else {
+    Q.nsdap_majority_front = "Impossible (" + Q.nsdap_votes + "%)";
+}
 
 // set faction strength/dissent to 0
 // Capping NSDAP custom factions so they don't drop below 0
