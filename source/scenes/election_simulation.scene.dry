@@ -18,7 +18,7 @@ Q.unemployed = 8.6;
 Q.catholics = 30;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other', 'strasser', 'sa_rebel', 'munich_rebel'];
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
@@ -91,7 +91,7 @@ Q.unemployed = 20;
 Q.catholics = 30;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other', 'strasser', 'sa_rebel', 'munich_rebel'];
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
@@ -173,7 +173,7 @@ Q.unemployed = 33;
 Q.catholics = 30;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
-Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other', 'strasser', 'sa_rebel', 'munich_rebel'];
 
 // Support for party by social group
 // they don't have to sum to 100 since the electoral calculations will be normalized.
@@ -317,3 +317,10 @@ Bourgeois Coalition (Z + BVP + DDP + DVP + Others): [+ bourgeois_coalition +]
 
 Right-wing Coalition (Z + BVP + DVP + Others + DNVP): [+ right_coalition +]
 
+Harzburg Front (NSDAP + DNVP + Stahlhelm/Others): [+ harzburg_front +]
+
+National Concentration (NSDAP + DNVP + Center Party): [+ national_concentration +]
+
+Right-wing Minority Cabinet (NSDAP + DNVP): [+ right_minority_cabinet +]
+
+NSDAP Absolute Majority (NSDAP Alone): [+ nsdap_majority_front +]
